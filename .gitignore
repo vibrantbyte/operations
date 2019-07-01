@@ -59,3 +59,16 @@ typings/
 
 # next.js build output
 .next
+
+### mac
+*.DS_Store
+
+### IDEA
+*.iml
+.idea/
+
+# IntelliJ
+/out/
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
