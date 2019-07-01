@@ -4,8 +4,12 @@
   "version": "1.0",
   "manifest_version": 2,
   "browser_action": {
-    "default_popup": "index.html",
-    "default_icon": "luban.png"
+    "default_popup": "popup.html",
+    "default_icon": "luban.png",
+    "default_title": "Lu Ban Tool"
+  },
+  "icons": {
+    "48": "luban.png"
   },
   "commands": {
     "_execute_browser_action": {
@@ -16,5 +20,15 @@
       "description": "Opens luban.html"
     }
   },
-  "permissions": ["http://*.shanyishanmei.com/", "activeTab"]
+  "background":{
+    "page":"background.html"
+    //,"scripts": ["sources/jquery-1.9.1.min.js","sources/background.js"]
+  },
+  "permissions": ["cookies","http://*.autohome.com.cn/", "activeTab","storage"],
+  "content_scripts": [{
+    "matches": ["http://*/*","https://*/*"],
+    "js": ["sources/jquery-1.9.1.min.js", "sources/content.js"],   
+    "run_at": "document_start",
+    "all_frames": true
+}] 
 }

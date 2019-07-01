@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>设置报警邮箱及报警指标</title>
+    <script src="sources/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="sources/popup.js"></script>
+    <style>
+            body {
+                font-family: "微软雅黑";
+            }
+            .element {
+                margin: 15px;
+                width: 200px;
+                line-height: 25px;    
+            }
+            .btn {
+                margin: 15px;
+                width: 200px;
+                line-height: 35px;
+                background: #3AB2FF;
+                color: #fff;
+                font-size: 18px;
+                border: none;
+                border-radius: 5px;
+                outline: none;
+            }
+            .btn:active {
+                background: #3AB2aa;
+            }
+        </style>
+</head>
+<body>
+    <div class="element"><h3>守护状态：<i id="i_status">初始中...</i> </h3></div>
+    <button id="btn_switch" class="btn">开启规则监控</button>
+</body>
+</html>
