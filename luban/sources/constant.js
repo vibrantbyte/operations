@@ -1,0 +1,1 @@
+var status_lable = { none:"初始化...",start:"守护中...",close:"已停服..." };

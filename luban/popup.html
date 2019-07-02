@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <title>设置报警邮箱及报警指标</title>
     <script src="sources/jquery-1.9.1.min.js"></script>
+    <script src="sources/constant.js"></script>
     <script type="text/javascript" src="sources/popup.js"></script>
     <style>
             body {
@@ -12,12 +13,15 @@
             }
             .element {
                 margin: 15px;
-                width: 200px;
+                width: 350px;
                 line-height: 25px;    
+            }
+            .element i{
+                color: #00BFFF;
             }
             .btn {
                 margin: 15px;
-                width: 200px;
+                width: 350px;
                 line-height: 35px;
                 background: #3AB2FF;
                 color: #fff;
@@ -29,9 +33,14 @@
             .btn:active {
                 background: #3AB2aa;
             }
+            .input {
+                width: 250px;
+                color: #C0C0C0;
+            }
         </style>
 </head>
 <body>
+    <div class="element"><h3>电子邮箱：<input id="txt_email" class="input" type="text" value="请输入电子邮箱，多个邮箱使用分“;”分隔"  /> </div>
     <div class="element"><h3>守护状态：<i id="i_status">初始中...</i> </h3></div>
     <button id="btn_switch" class="btn">开启规则监控</button>
 </body>
