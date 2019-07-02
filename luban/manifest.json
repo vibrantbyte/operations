@@ -22,13 +22,12 @@
   },
   "background":{
     "page":"background.html"
-    //,"scripts": ["sources/jquery-1.9.1.min.js","sources/background.js"]
   },
-  "permissions": ["cookies","http://*.autohome.com.cn/", "activeTab","storage"],
+  "permissions": ["cookies","http://*.jinritemai.com/", "activeTab","storage","webRequest", "webRequestBlocking"],
   "content_scripts": [{
     "matches": ["http://*/*","https://*/*"],
-    "js": ["sources/jquery-1.9.1.min.js", "sources/content.js"],   
-    "run_at": "document_start",
+    "js": ["sources/jquery-1.9.1.min.js", "sources/content.js"],
+    "run_at": "document_end",
     "all_frames": true
-}] 
+}]
 }

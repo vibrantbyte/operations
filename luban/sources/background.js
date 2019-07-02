@@ -1,7 +1,8 @@
-var flag = {
-    begin : 0,
-    change : 0
-};//当前未开始
+var status_lable = { none:"初始化...",start:"守护中...",close:"已停服..." };
+var button_status = { open:"" }
+// 状态显示
+var status_text = status_lable.none;
+
 /*var d = new Date();
 console.log(d.toLocaleString());*/
 setInterval(function(){
@@ -10,17 +11,33 @@ setInterval(function(){
         console.log(pop.b);
     }
 }, 1000)
+
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-    setInterval(function(){
-        if (flag.change) {
-            var cab = chrome.tabs.connect(tabId);
-            cab.postMessage({ flag: flag.begin});
-            /*chrome.tabs.connect(tabId);
-            chrome.tabs.sendMessage(tabId, { greeting: "hello"});*/
-            flag.change = 0;
-        }
-    },100);
+    // setInterval(function(){
+    //     if (flag.change) {
+    //         var cab = chrome.tabs.connect(tabId);
+    //         cab.postMessage({ flag: flag.begin});
+    //         /*chrome.tabs.connect(tabId);
+    //         chrome.tabs.sendMessage(tabId, { greeting: "hello"});*/
+    //         flag.change = 0;
+    //     }
+    // },100);
 });
+
+chrome.tabs.query({active: true, currentWindow: true}, function(tabs){  
+    setInterval(function(){
+        if(status_text == status_lable.start){
+            chrome.tabs.sendMessage(tabs[0].id, {message:"calculate"}, function(response) {
+                if(typeof response !='undefined'){
+                    console.log(response);
+                }else{
+                    console.log("response为空=>"+response);
+                }
+            });//end  sendMessage 
+        }
+    },1000);
+}); //end query
+
 /*//接收消息
 chrome.extension.onConnect.addListener(function(bac) {
     bac.onMessage.addListener(function(msg) {
