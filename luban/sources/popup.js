@@ -10,31 +10,17 @@ $(document).ready(function(){
         }else{
             $("#btn_switch").text("开启规则监控");
         }
-        if(typeof(bg.data.email) == "undefined" || bg.data.email == ""){
-            // todo
-        }else{
-            $("#txt_email").val(bg.data.email); 
-        }
+        if(bg.data.shop){
+            //显示
+            $("#shop_name").find("label").text(bg.data.shop.shop_name);
+            $("#shop_phone").find("label").text(bg.data.shop.collect_tel);
+            $("#shop_email").find("label").text(bg.data.shop.email);
+            $("#shop_address").find("label").text(bg.data.shop.address);
+        }        
     }
-    
-    // input获取焦点
-    $("#txt_email").click(function(){
-        var email = $("#txt_email").val();
-        if(email.indexOf("请") > -1){
-            $("#txt_email").val("");   
-        }
-    });
     
     // 开启规则监控
     $("#btn_switch").click(function(){
-        var email = $("#txt_email").val();
-        if(email.indexOf("@") > -1){
-            bg.data.email = email;
-        }else{
-            alert("请填写正确的邮箱！！！");
-            return;
-        }
-
         //更新后台数据
         if(bg.data.status == bg.status_lable.start){
             bg.data.status = bg.status_lable.close;
@@ -45,4 +31,14 @@ $(document).ready(function(){
         }
         $("#i_status").text(bg.data.status);
     });
+
+    //刷新popup
+    window.setInterval(function(){
+        // 扫描次数
+        if(bg && bg.data && bg.data.times){
+            $("#safe_times").text(bg.data.times);
+        }
+
+    },3 * 1000);
+
 });

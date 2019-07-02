@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <title>设置报警邮箱及报警指标</title>
-    <script src="sources/jquery-1.9.1.min.js"></script>
-    <script src="sources/constant.js"></script>
+    <script type="text/javascript" src="sources/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="sources/constant.js"></script>
     <script type="text/javascript" src="sources/popup.js"></script>
     <style>
             body {
@@ -18,6 +18,9 @@
             }
             .element i{
                 color: #00BFFF;
+            }
+            .element label{
+                color: #f15a22;
             }
             .btn {
                 margin: 15px;
@@ -33,15 +36,14 @@
             .btn:active {
                 background: #3AB2aa;
             }
-            .input {
-                width: 250px;
-                color: #C0C0C0;
-            }
         </style>
 </head>
 <body>
-    <div class="element"><h3>电子邮箱：<input id="txt_email" class="input" type="text" value="请输入电子邮箱，多个邮箱使用分“;”分隔"  /> </div>
-    <div class="element"><h3>守护状态：<i id="i_status">初始中...</i> </h3></div>
+    <div class="element"><h3>守护状态：<i id="i_status">初始中...</i> >> 已守护 <strong id="safe_times">0</strong> 次</h3></div>
+    <div id="shop_name" class="element"><h3>店铺名称：<label></label></div>
+    <div id="shop_phone" class="element"><h3>电话号码：<label></label></div>
+    <div id="shop_email" class="element"><h3>电子邮箱：<label></label></div>
+    <div id="shop_address" class="element"><h3>注册地址：<label></label></div>
     <button id="btn_switch" class="btn">开启规则监控</button>
 </body>
 </html>
