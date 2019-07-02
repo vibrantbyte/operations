@@ -12,6 +12,7 @@ setInterval(function(){
     }
 }, 1000)
 
+// 刷新时间
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     // setInterval(function(){
     //     if (flag.change) {
@@ -24,19 +25,26 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     // },100);
 });
 
-chrome.tabs.query({active: true, currentWindow: true}, function(tabs){  
-    setInterval(function(){
-        if(status_text == status_lable.start){
-            chrome.tabs.sendMessage(tabs[0].id, {message:"calculate"}, function(response) {
-                if(typeof response !='undefined'){
-                    console.log(response);
-                }else{
-                    console.log("response为空=>"+response);
-                }
-            });//end  sendMessage 
-        }
-    },1000);
-}); //end query
+
+
+// 使用长连接交互
+var port = chrome.runtime.connect({name: "con1"});
+https://blog.csdn.net/talking12391239/article/details/40432265
+
+// // 发送请求
+// chrome.tabs.query({active: true, currentWindow: true}, function(tabs){  
+//     setInterval(function(){
+//         if(status_text == status_lable.start){
+//             chrome.tabs.sendMessage(tabs[0].id, {message:"calculate"}, function(response) {
+//                 if(typeof response !='undefined'){
+//                     console.log(response);
+//                 }else{
+//                     console.log("response为空=>"+response);
+//                 }
+//             });//end  sendMessage 
+//         }
+//     },1000);
+// }); //end query
 
 /*//接收消息
 chrome.extension.onConnect.addListener(function(bac) {
